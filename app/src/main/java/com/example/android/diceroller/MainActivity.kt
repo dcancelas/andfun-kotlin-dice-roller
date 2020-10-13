@@ -20,6 +20,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -32,10 +33,12 @@ class MainActivity : AppCompatActivity() {
 
         val rollButton: Button = findViewById(R.id.roll_button)
         rollButton.setOnClickListener {
-            rollDice()
+            roll_button.isEnabled = false
+            rollAnimation()
         }
 
         diceImage = findViewById(R.id.dice_image)
+        diceImage.setImageResource(R.drawable.dice_1)
     }
 
     private fun rollDice() {
@@ -49,5 +52,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         diceImage.setImageResource(drawableResource)
+    }
+
+    private fun rollAnimation() {
+        diceImage.animate().apply {
+            duration = 500
+            rotationXBy(360f)
+        }.withEndAction(Runnable {
+            rollDice()
+            roll_button.isEnabled = true
+        }).start()
     }
 }
