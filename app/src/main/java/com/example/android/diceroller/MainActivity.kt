@@ -51,11 +51,11 @@ class MainActivity : AppCompatActivity() {
         diceImage.setImageResource(R.drawable.dice_1)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    /*override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.default_menu, menu)
         return true
-    }
+    }*/
 
     private fun rollDice() {
         val drawableResource = when (Random().nextInt(6) + 1) {
@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
         }).start()
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    /*override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.theme -> {
                 if (AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_NO) {
@@ -95,6 +95,6 @@ class MainActivity : AppCompatActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
-    }
+    }*/
 
 }
